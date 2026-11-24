@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - World Pi Merchant</title>
+<style>
+body{font-family:Arial;background:#0f0f0f;color:white;margin:0;padding:20px}
+.container{max-width:500px;margin:0 auto}
+h1{color:#facc15}
+.card{background:#1a1a1a;padding:20px;border-radius:15px;margin-top:20px}
+input{width:100%;padding:12px;margin:10px 0;border-radius:10px;border:none;font-size:16px;box-sizing:border-box}
+button{width:100%;padding:14px;background:#facc15;border:none;border-radius:10px;font-weight:bold;font-size:16px;cursor:pointer;margin-top:10px}
+.invoice{background:white;color:black;padding:20px;border-radius:15px;margin-top:20px;display:none}
+.success{background:#22c55e;color:white;padding:15px;border-radius:10px;text-align:center;display:none;margin-top:20px}
+a{color:#facc15}
+</style>
+</head>
+<body>
+<div class="container">
+<a href="index.html">← Back to Home</a>
+<h1>Merchant Dashboard</h1>
+<p>Welcome, Yassine Pêche 👋</p>
+<div class="card">
+<h2>Create New Invoice</h2>
+<label>Customer Name</label>
+<input id="name" type="text" placeholder="Ex: Ahmed" value="Ahmed">
+<label>Amount in Pi</label>
+<input id="amount" type="number" placeholder="Ex: 10" value="10">
+<label>Product / Service</label>
+<input id="product" type="text" placeholder="Ex: Coffee" value="Coffee">
+<button onclick="createInvoice()">Create Invoice →</button>
+</div>
+<div id="invoiceBox" class="invoice">
+<h2>🧾 Invoice</h2>
+<p><b>Merchant:</b> Yassine Pêche</p>
+<p><b>Customer:</b> <span id="showName"></span></p>
+<p><b>Product:</b> <span id="showProduct"></span></p>
+<p><b>Amount:</b> <span id="showAmount"></span> π</p>
+<hr>
+<button onclick="payNow()" style="background:#7c3aed;color:white">Pay with Pi Wallet</button>
+</div>
+<div id="successBox" class="success">
+<h2>✅ Payment Successful!</h2>
+<p>Payment of <span id="successAmount"></span> π received</p>
+</div>
+</div>
+<script>
+function createInvoice(){
+  let name=document.getElementById('name').value;
+  let amount=document.getElementById('amount').value;
+  let product=document.getElementById('product').value;
+  document.getElementById('showName').innerText=name;
+  document.getElementById('showAmount').innerText=amount;
+  document.getElementById('showProduct').innerText=product;
+  document.getElementById('successAmount').innerText=amount;
+  document.getElementById('invoiceBox').style.display='block';
+}
+function payNow(){
+  alert('Opening Pi Wallet...');
+  setTimeout(()=>{document.getElementById('successBox').style.display='block';},1000);
+}
+</script>
+</body>
+</html>
